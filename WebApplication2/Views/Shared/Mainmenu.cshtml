@@ -1,0 +1,8 @@
+﻿@model List<WebApplication2.Context.catalog>
+
+<ul class="list">
+    @foreach (var item in Model)
+    {
+        <li class="even">@Html.ActionLink(item.name, "ProductCatalog", "cataloguser", new { @id = item.id }, null) </li>
+    }
+</ul>

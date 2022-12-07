@@ -1,0 +1,70 @@
+﻿@model IEnumerable<WebApplication2.Context.product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/qqq_.cshtml";
+}
+
+<h2>Sản Phẩm</h2>
+
+<p>
+    @Html.ActionLink("Thêm sản phẩm", "Create", null, new { @class = "btn btn-warning" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.content)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.created)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.image_link)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.catalog.name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.content)
+            </td>
+    
+            <td>
+                @Html.DisplayFor(modelItem => item.created)
+            </td>
+            <td>
+                <img src="~/Content/hinhanh/@item.image_link" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.catalog.name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
+
+</table>
+<br />
+<br />

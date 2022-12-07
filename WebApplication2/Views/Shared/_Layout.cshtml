@@ -1,0 +1,129 @@
+﻿
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>L.I.H</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/css/style.css" />
+
+</head>
+
+<body>
+    <header>
+
+        <div id="logo">
+            <img src="~/Content/hinhanh/170939215_841082360095053_9052116840066442180_n.jpg" height="120px" width="200px" />
+        </div>
+        <div class="xoa"></div>
+        <div id="dn">
+            @if (Session["user"] != null)
+            {
+                <a>Xin Chào Bạn , @Session["FullName"]</a>
+                <br />
+                <a href="~/Home/Logout" class="btn btn-warning">ĐĂNG XUẤT</a>
+            }
+            else
+            {
+
+                <a href="~/Home/Login">ĐĂNG NHẬP</a>
+                <a href="~/Home/Register">ĐĂNG KÝ</a>
+
+            }
+        </div>
+
+        <div class="xoa"></div>
+
+        <nav>
+            <div id="subnav">
+                <ul id="navleft">
+                    <li>
+                        @Html.ActionLink("TRANG CHỦ", "Index", "Home")
+                    </li>
+                    <li>
+                        @Html.ActionLink("SẢN PHẨM", "Index", "sanpham")
+                    </li>
+                    <li>
+                        @Html.ActionLink("ĐIỀU KHOẢN", "Index", "DieuKhoan")
+                    </li>
+                </ul>
+                <div id="navright">
+                    <input type="text" name="find" size="36" placeholder="Hãy nhập tên sản phẩm cần tìm" />
+                    <input type="button" title="Tìm kiếm" value="Tìm kiếm" />
+
+                    <a href="@Url.Action("ShowToCard","Cart")">
+                    <img src="~/Content/hinhanh/ghang.jfif" height="20px" width="20px"/>
+                    <span class="notify" id="CartCount"></span>
+                    <small>Gio Hang</small>
+                    </a>
+
+                </div>
+            </div>
+        </nav>
+        <div id="body">
+            <img src="~/Content/hinhanh/Dj-mie-noi-bat-o-rap-viet-mua-1-local-brand-vn-585x372.png" id="img1" width="1500px" max-with= " pixcel"  height="500px" />
+        </div>
+    </header>
+    <article>
+        <aside id="left">
+            <div class="div1">
+                <p class="title">Danh Mục Sản Phẩm</p>
+                @{Html.RenderAction("Mainmenu", "Home");}
+            </div>
+            <div class="div1">
+                <p class="title">Sale</p>
+                <div class="sp">
+                    <img src="~/Content/hinhanh/172127881_458645828739229_6357546691748370164_n.jpg" width="180px" height="230" />
+                    <p>Giá : <del>350.000đ</del></p>
+                    <p>325.000đ</p>
+                    <p class="salepage"> @Html.ActionLink("Xem Thêm >>", "Index", "Sale")</p>
+                </div>
+            </div>
+        </aside>
+        @RenderBody()
+        <aside id="right">
+            <div class="div2">
+                <p class="title">TIN TỨC</p>
+                <table>
+                    <tr>
+                        <td><img src="~/Content/hinhanh/Dj-mie-noi-bat-o-rap-viet-mua-1-local-brand-vn-585x372.png" width="50px" height="50px"></td>
+                        <td><a href="https://localbrand.vn/2020/08/20/dj-mie-tam-diem-cua-rap-viet-duoc-nhieu-local-brand-chon-mat-gui-vang/">DJ MIE tâm điểm của RAP VIỆT được nhiều local brand chọn mặt gửi vàng</a></td>
+                    </tr>
+                    <tr>
+                        <td><img src="~/Content/hinhanh/devereux-brand-thuong-hieu-thoi-trang-golf.jpg" width="50px" height="50px"></td>
+                        <td><a href="https://localbrand.vn/2021/04/06/bo-suu-tap-vien-nang-peachy-cua-devereux-brand-duoc-lay-cam-hung-tu-thuc-don-bac-thay-ve-an-uong/">BST “Peachy” của Devereux brand lấy cảm hứng từ thực đơn của bậc thầy về ăn uống</a></td>
+                    </tr>
+                    <tr>
+                        <td><img src="~/Content/hinhanh/mở-1-local-brand-cần-những-gì-585x372.png" width="50px" height="50px"></td>
+                        <td><a href="https://localbrand.vn/2020/08/18/thu-kinh-doanh-local-brand-mot-hanh-trinh-bi-hai/">Thử kinh doanh local brand: Một hành trình bi hài</a></td>
+                    </tr>
+                    <tr>
+                        <td><img src="~/Content/hinhanh/streetwear-style-nam-nu-local-brand-585x372.png" width="50px" height="50px"></td>
+                        <td><a href="https://localbrand.vn/2020/08/13/10-set-do-streetwear-style-2020-tu-cac-local-brand-viet-nam/">Phá tan sự nhàm chán bằng loạt kiểu phối đồ Streetwear Style</a></td>
+                    </tr>
+                </table>
+                <div class="xoa">
+                    <a class="xem" href="https://localbrand.vn/"><center>Xem thêm tại</center></a>
+                </div>
+            </div>
+        </aside>
+    </article>
+    <footer>
+        <div class="footer_left">
+            <ul>
+                <li>Phone: 0888504657</li>
+                <li>CÔNG TY TNHH L.I.H</li>
+                <li>Local Brand fashion</li>
+                <li>Ngày cấp: 20/03/2021</li>
+                <li>Website: L.I.H.html</li>
+            </ul>
+        </div>
+        <div class="footer_right">
+            <img src="~/Content/hinhanh/facebook_32.png" width="32" height="32" />
+            <img src="~/Content/hinhanh/twitter_32.png" width="32" height="32" />
+            <img src="~/Content/hinhanh/email_32.png" width="32" height="32" />
+            <img src="~/Content/hinhanh/linkedin_32.png" width="32" height="32" />
+        </div>
+        <p>Bản Quyền <b>&copy</b> 2021 Life Of Hope Local Brand News</p>
+    </footer>
+</body>
+</html>

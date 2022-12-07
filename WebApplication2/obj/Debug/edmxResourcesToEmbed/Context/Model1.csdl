@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QUANLITHOITRANGModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="catalog">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="parent_id" Type="Int32" Nullable="false" />
+    <Property Name="sort_order" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="products" Relationship="Self.FK_product_catalog" FromRole="catalog" ToRole="product" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="catalog_id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="price" Type="Int32" Nullable="false" />
+    <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="created" Type="Int32" Nullable="false" />
+    <Property Name="image_link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="catalog" Relationship="Self.FK_product_catalog" FromRole="product" ToRole="catalog" />
+    <NavigationProperty Name="orders" Relationship="QUANLITHOITRANGModel.FK_orders_product" FromRole="product" ToRole="order" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_product_catalog">
+    <End Role="catalog" Type="Self.catalog" Multiplicity="1" />
+    <End Role="product" Type="Self.product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="catalog">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="product">
+        <PropertyRef Name="catalog_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QUANLITHOITRANGEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="catalogs" EntityType="Self.catalog" />
+    <EntitySet Name="products" EntityType="Self.product" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK_product_catalog" Association="Self.FK_product_catalog">
+      <End Role="catalog" EntitySet="catalogs" />
+      <End Role="product" EntitySet="products" />
+    </AssociationSet>
+    <EntitySet Name="Accounts" EntityType="QUANLITHOITRANGModel.Account" />
+    <EntitySet Name="orders" EntityType="QUANLITHOITRANGModel.order" />
+    <AssociationSet Name="FK_orders_product" Association="QUANLITHOITRANGModel.FK_orders_product">
+      <End Role="product" EntitySet="products" />
+      <End Role="order" EntitySet="orders" />
+    </AssociationSet>
+    <EntitySet Name="transactions" EntityType="QUANLITHOITRANGModel.transaction" />
+    <AssociationSet Name="FK_transactions_Account" Association="QUANLITHOITRANGModel.FK_transactions_Account">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="transaction" EntitySet="transactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orders_transactions" Association="QUANLITHOITRANGModel.FK_orders_transactions">
+      <End Role="transaction" EntitySet="transactions" />
+      <End Role="order" EntitySet="orders" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PassWord" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="TypeID" Type="Int32" />
+    <Property Name="ResetPasswordCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="transactions" Relationship="QUANLITHOITRANGModel.FK_transactions_Account" FromRole="Account" ToRole="transaction" />
+  </EntityType>
+  <EntityType Name="order">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="product_id" Type="Int32" Nullable="false" />
+    <Property Name="qty" Type="Int32" Nullable="false" />
+    <Property Name="amount" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="product" Relationship="QUANLITHOITRANGModel.FK_orders_product" FromRole="order" ToRole="product" />
+    <NavigationProperty Name="transaction" Relationship="QUANLITHOITRANGModel.FK_orders_transactions" FromRole="order" ToRole="transaction" />
+  </EntityType>
+  <Association Name="FK_orders_product">
+    <End Type="QUANLITHOITRANGModel.product" Role="product" Multiplicity="1" />
+    <End Type="QUANLITHOITRANGModel.order" Role="order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="transaction">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="status" Type="Boolean" Nullable="false" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="user_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="user_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="user_phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="amount" Type="Int32" Nullable="false" />
+    <Property Name="dateorder" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="dateship" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Account" Relationship="QUANLITHOITRANGModel.FK_transactions_Account" FromRole="transaction" ToRole="Account" />
+    <NavigationProperty Name="order" Relationship="QUANLITHOITRANGModel.FK_orders_transactions" FromRole="transaction" ToRole="order" />
+  </EntityType>
+  <Association Name="FK_transactions_Account">
+    <End Type="QUANLITHOITRANGModel.Account" Role="Account" Multiplicity="1" />
+    <End Type="QUANLITHOITRANGModel.transaction" Role="transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="transaction">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orders_transactions">
+    <End Type="QUANLITHOITRANGModel.transaction" Role="transaction" Multiplicity="1" />
+    <End Type="QUANLITHOITRANGModel.order" Role="order" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="transaction">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

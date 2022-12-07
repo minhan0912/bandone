@@ -1,0 +1,21 @@
+﻿@model IEnumerable<WebApplication2.Context.product>
+@{
+    ViewBag.Title = "Index";
+}
+
+<section>
+    <p class="title">SẢN PHẨM</p>
+    @foreach (var item in Model)
+    {
+        <div class="sp">
+                <a href="@Url.Action("Detail","product",new { id = item.id })">
+                    <img src="~/Content/hinhanh/@item.image_link" width="250" height="250" />
+                    <p>@item.name</p>
+                    <p>Giá :@item.price</p>
+
+                </a>
+            
+        </div>
+    }
+    </section>
+

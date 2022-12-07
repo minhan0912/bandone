@@ -1,0 +1,70 @@
+﻿@model WebApplication2.Models.CartModel
+
+@{
+    ViewBag.Title = "ShowToCard";
+    Layout = "~/Views/Shared/qq_.cshtml";
+}
+
+<h2>Giỏ Hàng</h2>
+@if (Model != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tên Sản Phẩm</th>
+                <th>Hình Ảnh</th>
+                <th>Giá</th>
+                <th>Số Lượng</th>
+                <th>Tổng</th>
+                <th>Xóa</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                double total = Convert.ToDouble(item.product.price * item.quantity);
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item.product.name)
+                    </td>
+                    <td>
+                        <img src="~/Content/hinhanh/@Url.Content(item.product.image_link)" style="width:100px;height:100px;" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.product.price)
+                    </td>
+                    <td>
+                        @using (Html.BeginForm("UpdateQuantityCard", "Cart"))
+                        {
+                            <input type="hidden" value="@item.product.id " name="id_product" />
+                            <input type="number" value="@item.quantity" name="quantity" />
+                            <p class="text-danger">
+                                @TempData["error1"]
+                            </p>
+                            <input type="submit" value="Cập Nhật" />
+                        }
+                    </td>
+                    <td>
+                        Total: @total VNĐ
+                    </td>
+                    <th>
+                        <a href="/Cart/RemoveCard/@item.product.id">Xóa Sản Phẩm</a>
+                    </th>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5" style="text-align:right">Sum Total:@Model.Total_Money() VNĐ</td>
+            </tr>
+
+
+
+        </tfoot>
+    </table>
+    <a href="/Cart/OrderCard/" class="btn  btn-primary" style="text-align:right">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="text" h>Đặt hàng</span>
+    </a>
+    <a href="/Home/Index"> << Tiếp Tục Mua </a>
+}

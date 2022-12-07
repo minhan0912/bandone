@@ -1,0 +1,424 @@
+/* CSS Document */
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.xoa {
+    clear: both;
+}
+
+header {
+    width: auto;
+    margin: 0 auto;
+}
+
+    header div a {
+        color: black;
+    }
+
+#logo {
+    float: left;
+}
+
+#dn {
+    margin-top: -60px;
+    float: right;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    color: #000000;
+}
+
+header div#dn a:hover {
+    color: #F09;
+}
+
+.img1 {
+    vertical-align: middle;
+}
+
+nav {
+    background-color: #919191;
+    width: auto;
+    height: 40px;
+    margin: 0px auto;
+}
+
+    nav ul li a {
+        color: black;
+    }
+
+ul#navleft {
+    padding-left: 50px;
+}
+
+    ul#navleft li {
+        float: left;
+        padding: 8px;
+        font-size: 25px;
+        list-style-type: square;
+        display: inline-block;
+    }
+
+    ul#navleft a:hover {
+        transition-duration: 2s;
+        text-decoration: none;
+        color: aliceblue;
+    }
+
+div#navright {
+    float: right;
+    padding: 8px;
+}
+
+.title {
+    background-color: #919191;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    padding: 3px;
+    text-transform: uppercase;
+}
+
+#body {
+    width: auto;
+    margin: auto;
+    background-color: #edeare;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+#left {
+    float: left;
+    width: 240px;
+    padding-left:inherit;
+}
+
+#left, #right, section {
+    display: inline-table;
+}
+
+.div1 {
+    border-style: groove;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+.list {
+    list-style: none;
+    font-size: 20px;
+}
+
+    .list a {
+        color: black;
+        text-align: center;
+    }
+
+.odd a {
+    width: 240px;
+    height: 25px;
+    display: block;
+    background-color: #747474;
+    line-height: 25px;
+    background-position: 5px 5px;
+}
+
+    .odd a:hover {
+        transition-duration: 1s;
+        text-decoration: none;
+        color: aliceblue;
+        background-color: black;
+    }
+
+.even a {
+    width: 240px;
+    height: 25px;
+    display: block;
+    background-color: #DADADA;
+    line-height: 25px;
+    background-position: 5px 5px;
+}
+
+    .even a:hover {
+        transition-duration: 1s;
+        text-decoration: none;
+        color: aliceblue;
+        background-color: black;
+    }
+
+.sp {
+    width: 210px;
+    height: auto;
+    margin: 0px auto;
+    float: left;
+    padding: 5px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+    .sp > img {
+        width: 80%;
+        height: 80%;
+        margin: 2px auto;
+    }
+
+    .sp p {
+        color: black;
+        text-align: center;
+        margin: 0px;
+        font-size: 20px;
+        width: 100%;
+    }
+
+    .sp a img {
+        width: 170px;
+        height: 170px;
+    }
+
+    .sp p del {
+        color: gray;
+    }
+
+.salepage {
+    padding: 10px;
+    text-decoration-color: black;
+}
+
+    .salepage a {
+        color: black
+    }
+
+        .salepage a:hover {
+            transition-duration: 1s;
+            text-decoration: none;
+            color: aliceblue;
+        }
+
+section {
+    width: 950px;
+    margin-left: 5px;
+    border-color: gray;
+    border-style: groove;
+    border-radius: 5px;
+}
+
+article {
+    width: auto;
+    margin:auto;
+}
+
+    article img {
+        border-radius: 30px;
+        -moz-border-radius: 50px;
+        -webkit-border-radius: 25px;
+        box-shadow: 1px 2px 2px 2px gray;
+    }
+
+        article img:hover {
+            transition-duration: 3s;
+            transform: scale(1.3);
+            -webkid-transform: scale(1.3);
+            -moz-tranform: scale(1.3);
+            -o-transform: scale(1.3);
+            -ms-transform: scale(1.3);
+        }
+
+.nextpage {
+    text-align: center;
+    font-size: 30px;
+    color: black;
+}
+
+#right {
+    width: 240px;
+    float: right;
+
+}
+
+.div2 {
+    height: auto;
+    border-style: groove;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+aside table td {
+    text-align: justify;
+    padding: 5px 5px 5px 5px;
+}
+
+    aside table td a {
+        font-size: 20px;
+        color: black;
+    }
+
+        aside table td a:hover {
+            transition-duration: 1s;
+            text-decoration: none;
+            color: aliceblue;
+        }
+
+.xoa a {
+    font-size: 20px;
+    color: black;
+}
+
+    .xoa a:hover {
+        transition-duration: 1s;
+        text-decoration: none;
+        color: aliceblue;
+    }
+
+footer {
+    width: auto;
+    height: 230px;
+    background-color: gray;
+    color: #FFF;
+    clear: both;
+    margin: 0px auto;
+    font-size: 20px;
+}
+
+    footer .footer_left {
+        width: 40%;
+        height: 200px;
+        float: left;
+    }
+
+.footer_left ul li {
+    font-size: 15px;
+}
+
+footer .footer_right {
+    width: 20%;
+    height: 100px;
+    float: right;
+    margin-top: 40px;
+}
+
+footer > div > ul {
+    list-style-type: square;
+    padding-top: 20px;
+}
+
+    footer > div > ul > li {
+        font-size: 10px;
+    }
+
+footer p {
+    text-align: center;
+    font-style: italic;
+    clear: both;
+}
+
+.dangnhap {
+    margin-left: 240px;
+}
+
+.giohang {
+    text-align: center;
+    background-color: White;
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 8px;
+}
+
+.sosanpham {
+    float: left;
+    text-align: left;
+    padding: 5px 0 0 15px;
+}
+
+.cart_icon {
+    float: left;
+    padding: 5px 0 0 15px;
+}
+
+span.border_cart {
+    width: 100px;
+    height: 1px;
+    display: block;
+    margin: 3px 0;
+    border-top: 1px #B8ADAD dashed;
+}
+
+.loginbox {
+    width: 320px;
+    height: 420px;
+    background: white;
+    color: black;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+}
+
+h1 {
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+}
+
+.loginbox p {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+
+.loginbox input {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+    .loginbox input[type="text"], input[type="password"] {
+        border: none;
+        border-bottom: 1px solid #fff;
+        background: transparent;
+        outline: none;
+        height: 40px;
+        color: black;
+        font-size: 16px;
+    }
+
+    .loginbox input[type="submit"] {
+        border: none;
+        outline: none;
+        height: 40px;
+        background: gray;
+        color: black;
+        font-size: 18px;
+        border-radius: 20px;
+    }
+
+        .loginbox input[type="submit"]:hover {
+            cursor: pointer;
+            background: #ffc107;
+            color: #000;
+        }
+
+.loginbox a {
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: darkgrey;
+}
+
+    .loginbox a:hover {
+        color: #ffc107;
+    }
